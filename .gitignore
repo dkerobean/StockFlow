@@ -1,0 +1,79 @@
+# .gitignore for Node.js Project
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build/Output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.serverless/
+
+# Cache
+.cache/
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Coverage
+coverage/
+.nyc_output/
+
+# IDE & Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Debug
+debug/
+*.pid
+
+# Testing
+/test-results/
+
+# Optional
+*.tmp
+*.temp
+*.seed
+*.pid.lock
+
+# Framework-specific (uncomment if needed)
+# .next/       (Next.js)
+# .nuxt/       (Nuxt.js)
+# .cache/      (Gatsby)
+# public/wp-content/ (WordPress)
+# .svelte-kit/ (SvelteKit)
+
+# Package Managers
+# (Keep package-lock.json/yarn.lock for consistent installs)
+# pnpm-lock.yaml
