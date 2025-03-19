@@ -5,8 +5,10 @@ const route = require("./Routes/routes");
 const ejs = require("ejs").__express;
 const fs = require("fs");
 var https = require("https");
-const mongoose = require("mongoose"); // Import Mongoose
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 require("./config/db");
 
@@ -14,7 +16,7 @@ require("./config/db");
 dotenv.config({ path: "./config.env" });
 
 // MongoDB Connection
-const DB = process.env.DATABASE; // Use the online MongoDB connection string
+const DB = process.env.DATABASE;
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
@@ -31,6 +33,22 @@ app.set("views", path.join(__dirname, "Views"));
 app.engine("ejs", ejs);
 
 app.set("layout", "layout");
+
+// Body parser middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Session configuration
+app.use(cookieParser());
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: 24 * 60 * 60 * 1000 // 1 day
+  }
+}));
 
 // Serve static files
 app.use(express.static(__dirname + "/public"));
