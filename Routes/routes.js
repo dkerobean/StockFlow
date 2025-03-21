@@ -1,6 +1,7 @@
 const express = require("express");
 const route = express.Router();
 const public_routes = require("./public.routes");
+const userController = require('../controllers/authController');
 
 var LocalStorage = require("node-localstorage").LocalStorage,
   localStorage = new LocalStorage("./local-storage");
@@ -76,12 +77,18 @@ route.get(public_routes.login, (req, res, next) => {
 route.get(public_routes.signUp, (req, res, next) => {
   res.render("Auth/signup");
 });
+
 route.get("/forget-password", (req, res, next) => {
   res.render("Auth/forgetPassword");
 });
 route.get("/reset-password", (req, res, next) => {
   res.render("Auth/resetPassword");
 });
+
+route.post('/user-signup', userController.signup);
+route.post('/user-login', userController.login);
+
+
 // auth **
 
 // main

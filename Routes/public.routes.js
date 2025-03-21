@@ -4,6 +4,8 @@ public_routes.login = "/login";
 
 public_routes.signUp = "/sign-up";
 
+public_routes.user_signUp = "/user-signup";
+
 public_routes.pageNotFound = "/error-404";
 
 public_routes.serverError = "/error-500";

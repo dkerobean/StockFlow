@@ -11,6 +11,7 @@ mongoose
   .connect(DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useBigInt64: true, // Enable BigInt64 support
   })
   .then(() => console.log("DB connection successful!"))
   .catch((err) => console.error("DB connection error:", err));

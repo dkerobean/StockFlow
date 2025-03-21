@@ -63,6 +63,9 @@ exports.signup = async (req, res) => {
     newUser.lastLogin = Date.now();
     await newUser.save({ validateBeforeSave: false });
 
+    // Set toast message
+    req.session.toastMessage = "Signup successful! Welcome, " + newUser.name;
+
     // If it's an AJAX request, send JSON response
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
       return createSendToken(newUser, 201, req, res);
@@ -111,6 +114,9 @@ exports.login = async (req, res) => {
     // Update last login
     user.lastLogin = Date.now();
     await user.save({ validateBeforeSave: false });
+
+    // Set toast message
+    req.session.toastMessage = "Login successful! Welcome back, " + user.name;
 
     // If it's an AJAX request, send JSON response
     if (req.xhr || req.headers.accept.indexOf('json') > -1) {
